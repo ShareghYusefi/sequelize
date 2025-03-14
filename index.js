@@ -3,9 +3,24 @@ const express = require("express");
 const sequelize = require("./config");
 const app = express();
 
+// import the department model
+const Department = require("./models/department");
+
+// get all departments
+app.get("/departments", (req, res) => {
+  Department.findAll()
+    .then((deparment) => {
+      res.status(200).send(deparment);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send("Internal Server Error)");
+    });
+});
+
 // testing database connection (asyncronous operation)
 sequelize
-  .authenticate()
+  .sync() // sync creates the table if it does not exist in the database
   .then(() => {
     console.log("connection has been established successfully");
   })

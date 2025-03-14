@@ -6,6 +6,7 @@ const sequelize = new Sequelize("organization", "root", "password", {
   host: "localhost",
   dialect: "mysql",
   port: 3307,
+  logging: console.log,
 });
 
 // Export the sequelize object
