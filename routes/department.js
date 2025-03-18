@@ -2,10 +2,13 @@
 const router = require("express").Router();
 // import the department model
 const Department = require("../models/department");
+const Employee = require("../models/employees");
 
 // get all departments
 router.get("/departments", (req, res) => {
-  Department.findAll()
+  Department.findAll({
+    include: Employee
+  })
     .then((deparments) => {
       res.status(200).send(deparments);
     })
