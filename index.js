@@ -1,22 +1,12 @@
 const express = require("express");
 // get sequelize connection from config file
 const sequelize = require("./config");
+// import the department routes
+const departmentRoutes = require("./routes/department");
 const app = express();
 
-// import the department model
-const Department = require("./models/department");
-
-// get all departments
-app.get("/departments", (req, res) => {
-  Department.findAll()
-    .then((deparment) => {
-      res.status(200).send(deparment);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).send("Internal Server Error)");
-    });
-});
+// use the department routes
+app.use(departmentRoutes);
 
 // testing database connection (asyncronous operation)
 sequelize

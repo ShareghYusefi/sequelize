@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const { DataTypes } = require("sequelize");
 // get sequelize connection from config file
 const sequelize = require("../config");
 // import the employee model
