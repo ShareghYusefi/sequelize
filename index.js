@@ -3,10 +3,14 @@ const express = require("express");
 const sequelize = require("./config");
 // import the department routes
 const departmentRoutes = require("./routes/department");
+const employeeRoutes = require("./routes/employee");
 const app = express();
+// this allows working with url encoded data
+app.use(express.urlencoded({ extended: true }));
 
 // use the department routes
 app.use(departmentRoutes);
+app.use(employeeRoutes);
 
 // testing database connection (asyncronous operation)
 sequelize

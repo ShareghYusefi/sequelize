@@ -24,6 +24,10 @@ const Employee = sequelize.define(
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+    department_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
   {
     // Other model options go here
