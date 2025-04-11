@@ -4,13 +4,18 @@ const sequelize = require("./config");
 // import the department routes
 const departmentRoutes = require("./routes/department");
 const employeeRoutes = require("./routes/employee");
+const studentsRoutes = require("./routes/student");
+var cors = require("cors");
 const app = express();
 // this allows working with url encoded data
 app.use(express.urlencoded({ extended: true }));
+// enable CORS for all routes
+app.use(cors());
 
 // use the department routes
 app.use(departmentRoutes);
 app.use(employeeRoutes);
+app.use(studentsRoutes);
 
 // testing database connection (asyncronous operation)
 sequelize
