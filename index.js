@@ -9,6 +9,8 @@ var cors = require("cors");
 const app = express();
 // this allows working with url encoded data
 app.use(express.urlencoded({ extended: true }));
+// this allows working with json data
+app.use(express.json());
 // enable CORS for all routes
 app.use(cors());
 
