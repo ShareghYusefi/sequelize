@@ -37,6 +37,7 @@ router.post("/students", (req, res) => {
   // create a new student using the Student model
   Student.create({
     name: req.body.name,
+    age: req.body.age,
     level: req.body.level,
   })
     .then((student) => {
@@ -60,6 +61,7 @@ router.patch("/students/:id", (req, res) => {
 
       // update the student record
       student.name = req.body.name;
+      student.age = req.body.age;
       student.level = req.body.level;
 
       // save the updated student into database
