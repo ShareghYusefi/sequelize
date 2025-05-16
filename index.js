@@ -29,6 +29,6 @@ sequelize
     console.log(err);
   });
 
-app.listen(3000, () => {
+app.listen(process.ebv.PORT || 3000, () => {
   console.log("listening to port 3000");
 });
