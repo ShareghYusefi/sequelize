@@ -1,4 +1,14 @@
 {
+  "name": "sequelize_api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Sharegh Yusefi",
+  "license": "ISC",
+  "description": "This project is for learning Sequelize ORM with MySQL.",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.2",
