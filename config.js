@@ -1,6 +1,5 @@
 // Import sequelize
 const { Sequelize } = require("sequelize");
-const { PostgresDialect } = require("@sequelize/postgres");
 
 const HOST = process.env.DB_HOST;
 const DATABASE = process.env.DATABASE;
@@ -9,15 +8,10 @@ const PASSWORD = process.env.PASSWORD;
 const PORT = 5432;
 
 // Use sequelize to make a connection to the database
-const sequelize = new Sequelize({
-  dialect: PostgresDialect,
-  database: DATABASE,
-  user: USER,
-  password: PASSWORD,
+const sequelize = new Sequelize(DATABASE, USER, PASSWORD, {
   host: HOST,
+  dialect: "postgres",
   port: PORT,
-  ssl: true,
-  clientMinMessages: "notice",
 });
 
 // Export the sequelize object
