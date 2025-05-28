@@ -60,7 +60,7 @@ router.post("/login", async (req, res) => {
     // Generate a JWT token with the user's id and email as payload, using a secret key and 1 day expiration
     const token = jwt.sign(
       { id: user.id, email: user.email },
-      process.env.JWT_SECRET || "secretkey",
+      process.env.JWT_SECRET || "my-super-secret-key",
       { expiresIn: "1d" }
     );
     // Respond with a success message and the generated token
