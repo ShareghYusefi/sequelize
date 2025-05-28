@@ -1,10 +1,11 @@
 // router is used to create routes in express in a separate file
 const router = require("express").Router();
+const verifyToken = require("../middlewares/auth");
 // import the student model
 const Student = require("../models/students");
 
 // get all students
-router.get("/students", (req, res) => {
+router.get("/students", verifyToken, (req, res) => {
   Student.findAll()
     .then((students) => {
       res.status(200).send(students);
