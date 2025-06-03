@@ -3,18 +3,21 @@ const jwt = require("jsonwebtoken");
 
 // Middleware to authenticate requests using JWT
 function verifyToken(req, res, next) {
-  // Get the token from the Authorization header (format: "Bearer <token>")
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
+  // Get the token from the request headers
+  const token = req.headers["x-authentication-token"];
+  console.log("Request Headers:", req.headers);
+  console.log("Token:", token);
 
   // If no token is provided, deny access
   if (!token) {
-    return res.status(401).json({ message: "Access denied. No token provided." });
+    return res
+      .status(401)
+      .json({ message: "Access denied. No token provided." });
   }
 
   try {
     // Verify the token using the secret key
-    const secret = process.env.JWT_SECRET || "secretkey";
+    const secret = process.env.JWT_SECRET || "my-super-secret-key";
     const decoded = jwt.verify(token, secret);
 
     // Attach the decoded user info to the request object

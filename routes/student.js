@@ -17,7 +17,7 @@ router.get("/students", verifyToken, (req, res) => {
 });
 
 // get a particular student
-router.get("/students/:id", (req, res) => {
+router.get("/students/:id", verifyToken, (req, res) => {
   Student.findByPk(parseInt(req.params.id))
     .then((student) => {
       // if student not found
