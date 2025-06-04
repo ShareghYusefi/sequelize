@@ -7,6 +7,7 @@ const employeeRoutes = require("./routes/employee");
 const studentsRoutes = require("./routes/student");
 const authRoutes = require("./routes/auth");
 var cors = require("cors");
+const verifyToken = require("./middlewares/auth");
 const app = express();
 // this allows working with url encoded data
 app.use(express.urlencoded({ extended: true }));
@@ -15,12 +16,15 @@ app.use(express.json());
 // enable CORS for all routes
 app.use(cors());
 
-// use the department routes
+// Public routes (unprotected)
+app.use(authRoutes);
+
+// Apply JWT auth to all routes below this line
+app.use(verifyToken);
+// Protected routes (require authentication)
 app.use(departmentRoutes);
 app.use(employeeRoutes);
 app.use(studentsRoutes);
-app.use(authRoutes);
-
 // testing database connection (asyncronous operation)
 sequelize
   .sync() // sync creates the table if it does not exist in the database
