@@ -17,7 +17,7 @@ function verifyToken(req, res, next) {
 
   try {
     // Verify the token using the secret key
-    const secret = process.env.JWT_SECRET || "my-super-secret-key";
+    const secret = process.env.JWT_SECRET;
     const decoded = jwt.verify(token, secret);
 
     // Attach the decoded user info to the request object
