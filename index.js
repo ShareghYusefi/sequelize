@@ -6,6 +6,7 @@ const departmentRoutes = require("./routes/department");
 const employeeRoutes = require("./routes/employee");
 const studentsRoutes = require("./routes/student");
 const authRoutes = require("./routes/auth");
+const fileRoutes = require("./routes/files");
 var cors = require("cors");
 const verifyToken = require("./middlewares/auth");
 const app = express();
@@ -25,6 +26,7 @@ app.use(verifyToken);
 app.use(departmentRoutes);
 app.use(employeeRoutes);
 app.use(studentsRoutes);
+app.use(fileRoutes);
 // testing database connection (asyncronous operation)
 sequelize
   .sync() // sync creates the table if it does not exist in the database

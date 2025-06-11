@@ -2,6 +2,8 @@
 const router = require("express").Router();
 // import the student model
 const Student = require("../models/students");
+// import upload middleware for handling file
+const upload = require("../middlewares/upload");
 
 // get all students
 router.get("/students", (req, res) => {
@@ -33,7 +35,7 @@ router.get("/students/:id", (req, res) => {
 });
 
 // creating a new student
-router.post("/students", (req, res) => {
+router.post("/students", upload.single("avatar"), (req, res) => {
   // create a new student using the Student model
   Student.create({
     name: req.body.name,
